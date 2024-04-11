@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.事件3</title>
+</head>
+
+<body>
+    <input type="button" value="my-btn" class="my-btn">
+    <input type="button" value="my-btn" class="my-btn">
+    <input type="button" value="my-btn" class="my-btn">
+    <input type="button" value="unbind" id="unbind">
+    <script>
+        const hi = () => {
+            alert('Hi')
+        }
+
+        const myBtn = document.getElementsByClassName('my-btn')
+        for (const el of myBtn) {
+            // .addEventListener(事件, function)增加事件監聽器至元素（註：事件沒有on）
+            /*el.addEventListener('click', () => {
+                alert('Hi')
+            })*/
+            el.addEventListener('click', hi)
+        }
+
+        const unbind = document.getElementById('unbind')
+        unbind.addEventListener('click', () => {
+            for (const el of myBtn) {
+                el.removeEventListener('click', hi)
+            }
+        })
+    </script>
+</body>
+
+</html>

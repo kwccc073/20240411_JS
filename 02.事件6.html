@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.事件6</title>
+    <style>
+        #out {
+            width: 300px;
+            height: 300px;
+            background: blue;
+            display: table-cell;
+            /* 垂直置中 */
+            vertical-align: middle;
+        }
+
+        #in {
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://x.com" id="link">X</a>
+    <div id="out">
+        <div id="in"></div>
+    </div>
+    <script>
+        // .preventDefault()阻止預設事件的發生
+        const link = document.getElementById('link')
+        link.addEventListener('click', event => {
+            event.preventDefault()
+        })
+
+        const divOut = document.getElementById('out')
+        const divIn = document.getElementById('in')
+        divOut.addEventListener('click', event => {
+            console.log('out', event.target)
+        })
+        divIn.addEventListener('click', event => {
+            // .stopPropagation()打斷向上傳遞的動作
+            event.stopPropagation()
+            console.log('In', event.target)
+        })
+    </script>
+</body>
+
+</html>

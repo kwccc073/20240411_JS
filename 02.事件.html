@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.事件</title>
+</head>
+
+<body>
+    <input type="button" value="按鈕1" onclick="alert('ABCD')">
+    <!-- this表示點到的這個標籤 -->
+    <input type="button" value="0" onclick="this.value++">
+    <input type="button" value="按鈕" onclick="onBtnClick()">
+    <input type="button" value="按鈕" onclick="onBtnClick2('可以用材。')">
+    <input type="button" value="按鈕" onclick="onBtnClick3(this,'可以用材。')">
+
+    <script>
+        const onBtnClick = () => {
+            alert('點了按鈕')
+        }
+        const onBtnClick2 = (text) => {
+            alert(text)
+        }
+        const onBtnClick3 = (el, text) => {
+            el.value = text
+            alert(text)
+        }
+    </script>
+</body>
+
+</html>

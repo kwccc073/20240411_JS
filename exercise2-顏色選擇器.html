@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顏色選擇器</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            background: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <input type="range" class="range" min="0" max="254"><span class="range-value">1</span><input type="button" value="隨機" class="botton"><br>
+    <input type="range" class="range" min="0" max="254"><span class="range-value">2</span><input type="button" value="隨機" class="botton"><br>
+    <input type="range" class="range" min="0" max="254"><span class="range-value">3</span><input type="button" value="隨機" class="botton">
+
+    <script>
+        const box = document.getElementById('box')
+        // 設定一個RGB陣列
+        const rgb = [0, 0, 0]
+
+        // 隨機按鈕
+        const botton = document.getElementsByClassName('botton')
+        const rangeValue = document.getElementsByClassName('range-value')
+        // 三個按鈕都套用
+        for (const i in botton) {
+            // 點擊按鈕後執行的動作：
+            botton[i].onclick = () => {
+                // 隨機取0~254
+                let number = Math.floor(Math.random() * 255)
+                rangeValue[i].innerHTML = number
+                // 套用到顏色
+                console.log(rangeValue[i].innerHTML)
+                rgb[i] = rangeValue[i].innerHTML
+            }
+        }
+
+        //拖拉
+        const range = document.getElementsByClassName('range')
+        for (const i in range) {
+            // range[i]不可用.addEventListene
+            // 移動range[i]時執行的動作：
+            range[i].oninput = () => {
+                // 改變數字
+                rangeValue[i].innerHTML = range[i].value
+                // 套用到顏色
+                console.log(rangeValue[i].innerHTML)
+                rgb[i] = rangeValue[i].innerHTML
+            }
+        }
+
+    </script>
+</body>
+
+</html>

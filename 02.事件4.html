@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.事件4</title>
+</head>
+
+<body>
+
+
+    <input type="button" value="btn-on" id="btn-on">
+    <input type="button" value="btn-listener" id="btn-listener">
+
+    <script>
+        const btnOn = document.getElementById('btn-on')
+        const btnlistener = document.getElementById('btn-listener')
+
+        // .onclick只能加一個到同一個事件，後面會蓋掉前面的
+        btnOn.onclick = () => {
+            alert('on 1')
+        }
+        btnOn.onclick = () => {
+            alert('on 2')
+        }
+
+        // .addEventListener可以綁很多種function到同一個事件
+        btnlistener.addEventListener('click', () => {
+            alert('listener 1')
+        })
+        btnlistener.addEventListener('click', () => {
+            alert('listener 2')
+        })
+    </script>
+</body>
+
+</html>

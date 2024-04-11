@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜拳</title>
+</head>
+
+<body>
+    <!-- 製作猜拳遊戲，網頁有三個按鈕，分別是剪刀、石頭和布
+        按鈕點下去後電腦隨機出拳，將電腦出拳和勝負結果用 alert() 顯示
+        最後在按鈕下方用 ul 和 li 清單列出勝負紀錄 -->
+    <input type="button" value="剪刀" class="btn">
+    <input type="button" value="石頭" class="btn">
+    <input type="button" value="布" class="btn">
+    <br>
+    <span>贏:<span id="win">0</span>，輸:<span id="lost">0</span>，平手: <span id="tie">0</span>
+    </span>
+    <br>
+    <ul id="ul"> </ul>
+
+    <script>
+        const btn = document.getElementsByClassName('btn')
+        const a = ['剪刀', '石頭', '布']
+        const win = document.getElementById('win')
+        const lost = document.getElementById('lost')
+        const tie = document.getElementById('tie')
+        let w = 0
+        let l = 0
+        let t = 0
+        const ul = document.getElementById('ul')
+
+        //每個按鈕設定
+        for (const el of btn) {
+            el.onclick = () => {
+                // 隨機出拳
+                let number = Math.floor(Math.random() * 3)
+                let mora = a[number]
+                // let mora = ''
+                // if (number === 0) {
+                //     mora = '剪刀'
+                // } else if (number === 1) {
+                //     mora = '石頭'
+                // } else if (number === 2) {
+                //     mora = '布'
+                // }
+
+
+                //判斷輸贏 & 計算總次數
+                let result = ''
+                let li = document.createElement(`li`)
+
+                if (el.value === mora) {
+                    result = '平手'
+                    t++
+                    tie.innerText = t
+                } else if ((el.value === '剪刀' && mora === '石頭') || (el.value === '石頭' && mora === '布') || (el.value == '布' && mora === '剪刀')) {
+                    result = '輸'
+                    l++
+                    lost.innerText = l
+
+                } else if ((el.value === '石頭' && mora === '剪刀') || (el.value === '布' && mora === '石頭') || (el.value == '剪刀' && mora === '布')) {
+                    result = '贏'
+                    w++
+                    win.innerText = w
+                }
+                alert(`你出${el.value}，電腦出${mora}，${result}`)
+                // 用 ul 和 li 清單列出勝負紀錄
+                li.innerHTML = `你出${el.value}，電腦出${mora}，${result}`
+                ul.appendChild(li)
+            }
+        }
+    </script>
+</body>
+
+</html>
