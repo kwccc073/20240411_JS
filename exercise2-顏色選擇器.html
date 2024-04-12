@@ -16,15 +16,16 @@
 </head>
 
 <body>
+
     <div id="box"></div>
-    <input type="range" class="range" min="0" max="254"><span class="range-value">1</span><input type="button" value="隨機" class="botton"><br>
-    <input type="range" class="range" min="0" max="254"><span class="range-value">2</span><input type="button" value="隨機" class="botton"><br>
-    <input type="range" class="range" min="0" max="254"><span class="range-value">3</span><input type="button" value="隨機" class="botton">
+    <input type="range" class="range" min="0" max="254" value="0"><span class="range-value">0</span><input type="button" value="隨機" class="botton"><br>
+    <input type="range" class="range" min="0" max="254" value="0"><span class="range-value">0</span><input type="button" value="隨機" class="botton"><br>
+    <input type="range" class="range" min="0" max="254" value="0"><span class="range-value">0</span><input type="button" value="隨機" class="botton">
 
     <script>
         const box = document.getElementById('box')
         // 設定一個RGB陣列
-        const rgb = [0, 0, 0]
+        const rgbValue = [0, 0, 0]
 
         // 隨機按鈕
         const botton = document.getElementsByClassName('botton')
@@ -37,8 +38,8 @@
                 let number = Math.floor(Math.random() * 255)
                 rangeValue[i].innerHTML = number
                 // 套用到顏色
-                console.log(rangeValue[i].innerHTML)
-                rgb[i] = rangeValue[i].innerHTML
+                rgbValue[i] = rangeValue[i].innerHTML
+                box.style.background = `rgb(${rgbValue[0]},${rgbValue[1]},${rgbValue[2]})`
             }
         }
 
@@ -51,8 +52,8 @@
                 // 改變數字
                 rangeValue[i].innerHTML = range[i].value
                 // 套用到顏色
-                console.log(rangeValue[i].innerHTML)
-                rgb[i] = rangeValue[i].innerHTML
+                rgbValue[i] = rangeValue[i].innerHTML
+                box.style.background = `rgb(${rgbValue[0]},${rgbValue[1]},${rgbValue[2]})`
             }
         }
 
